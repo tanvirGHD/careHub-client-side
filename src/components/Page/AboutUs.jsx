@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaHandHoldingHeart, FaUsers, FaLightbulb, FaHeart, FaBullseye, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'; // React Icons
+import Map from './Map';
 
 
 const AboutUs = () => {
@@ -47,19 +48,19 @@ const AboutUs = () => {
         {/* Contact Information */}
         <div className="mb-12">
           <h3 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-            <FaMapMarkerAlt className="text-blue-500 mr-2" /> Contact Us
+            <FaMapMarkerAlt className="text-[#336699] mr-2" /> Contact Us
           </h3>
           <div className="text-gray-600 text-lg space-y-2">
             <p className="flex items-center">
-              <FaMapMarkerAlt className="text-blue-500 mr-2" />
+              <FaMapMarkerAlt className="text-[#336699] mr-2" />
               638 Vicinuvincod Ave. Webster, NY 14830
             </p>
             <p className="flex items-center">
-              <FaPhone className="text-blue-500 mr-2" />
+              <FaPhone className="text-[#336699] mr-2" />
               +01 234-567-890
             </p>
             <p className="flex items-center">
-              <FaEnvelope className="text-blue-500 mr-2" />
+              <FaEnvelope className="text-[#336699] mr-2" />
               info@example.com
             </p>
           </div>
@@ -68,9 +69,9 @@ const AboutUs = () => {
         {/* Map Section */}
         <div className="mb-12">
           <h3 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-            <FaMapMarkerAlt className="text-blue-500 mr-2" /> Our Location
+            <FaMapMarkerAlt className="text-[#336699] mr-2" /> Our Location
           </h3>
-          <MapComponent /> {/* Add the MapComponent here */}
+          <Map></Map>
         </div>
 
         {/* Call to Action */}

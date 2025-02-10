@@ -1,20 +1,24 @@
-import { useState, useEffect } from "react";
 import { FaHeart, FaDollarSign, FaMapMarkerAlt, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 
 const TrendingCauses = () => {
-  const [charities, setCharities] = useState([]);
   const axiosSecure = useAxiosSecure();
 
-  // Fetch charity data
-  useEffect(() => {
-    axiosSecure("/all_donation")
-      .then((response) => {
-        setCharities(response.data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  // Fetch charity data using React Query
+  const {
+    data: charities = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["charities"], // Unique key for the query
+    queryFn: async () => {
+      const response = await axiosSecure.get("http://localhost:5000/all_donation");
+      return response.data;
+    },
+  });
 
   // Get the last 6 charities
   const lastSixCharities = charities.slice(-6);
@@ -28,8 +32,14 @@ const TrendingCauses = () => {
 
       {/* Charity Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-        {lastSixCharities.length === 0 ? (
-          <p className="text-center text-gray-500 col-span-full"><span className="loading loading-bars loading-xl"></span></p>
+        {isLoading ? (
+          <p className="text-center text-gray-500 col-span-full">
+            <span className="loading loading-bars loading-xl"></span>
+          </p>
+        ) : isError ? (
+          <p className="text-center text-red-500 col-span-full">
+            Error: {error.message}
+          </p>
         ) : (
           lastSixCharities.map((charity) => (
             <div

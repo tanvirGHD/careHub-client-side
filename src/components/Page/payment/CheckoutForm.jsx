@@ -122,7 +122,7 @@ const CheckoutForm = ({ amount, name }) => {
       </div>
 
       <button
-        className="w-full py-3 cursor-pointer bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300"
+        className="w-full py-3 cursor-pointer bg-[#1d657a] text-white font-semibold rounded-md shadow-md hover:bg-[#2b4e58] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300"
         type="submit"
         disabled={!stripe || !clientSecret}
       >

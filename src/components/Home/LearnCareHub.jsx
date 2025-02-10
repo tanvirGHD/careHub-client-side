@@ -23,7 +23,7 @@ const LearnCareHub = () => {
         <img
           src={img}
           alt="CareHub"
-          className="w-[550px] h-auto rounded-lg shadow-lg"
+          className="w-[530px] h-auto rounded-lg shadow-lg"
         />
       </motion.div>
 
