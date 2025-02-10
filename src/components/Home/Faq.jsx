@@ -2,28 +2,28 @@ import { useState } from "react";
 import img from "../../assets/faq.jpg";
 
 export default function Faq() {
-  // FAQ data array
+  // FAQ data array for a charity firm
   const dataArr = [
     {
-      title: "How do I create an account?",
+      title: "How can I donate to your charity?",
       description:
-        'To create an account, click on the "Sign Up" button and fill out the required information. Once done, you can enjoy the benefits of being a registered member.',
+        "You can donate to our charity by visiting our donation page and selecting the amount you wish to contribute. We accept various payment methods, including credit cards, PayPal, and bank transfers.",
     },
     {
-      title: "What is your return policy?",
+      title: "Is my donation tax-deductible?",
       description:
-        "Our return policy allows you to return items within 30 days of purchase. Please visit our returns page for detailed instructions and to initiate a return.",
+        "Yes, your donation is tax-deductible. We are a registered non-profit organization, and you will receive a receipt for your donation that you can use for tax purposes.",
     },
     {
-      title: "Can I change my shipping address?",
+      title: "How are the funds used?",
       description:
-        "Yes, you can change your shipping address before your order is shipped. Go to your account settings and update the shipping information accordingly.",
+        "The funds we receive are used to support our various programs, including providing food, shelter, education, and medical care to those in need. We ensure transparency in how the funds are allocated.",
     },
     {
-      title: "Are there any discounts for loyal customers?",
+      title: "Can I volunteer with your organization?",
       description:
-        "We appreciate our loyal customers! Stay tuned for exclusive discounts, promotions, and special offers available to members of our loyalty program.",
-    },
+        "Absolutely! We welcome volunteers who want to make a difference. Please visit our volunteer page to learn more about current opportunities and how to apply.",
+    }
   ];
 
   // Toggle state and function
@@ -33,7 +33,7 @@ export default function Faq() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full justify-center py-12 px-4">
+    <div className="flex flex-col md:flex-row w-full justify-center items-center py-10 mb-10 px-4">
       {/* Left Section: Accordion */}
       <div className="md:w-1/2 max-w-[550px] space-y-6 mr-8">
         {/* Mapping each accordion */}
@@ -41,23 +41,23 @@ export default function Faq() {
           <div
             key={idx}
             onClick={() => handleToggle(idx)}
-            className="cursor-pointer rounded-lg bg-white shadow-md transition-shadow duration-300 hover:shadow-lg"
+            className="cursor-pointer rounded-lg bg-[#D2F4F4] shadow-md transition-shadow duration-300 hover:shadow-lg border border-gray-200"
           >
             {/* Index Div */}
             <div className="flex items-center p-4">
-              <div className="flex size-12 select-none items-center justify-center rounded-md bg-zinc-700 text-xl font-semibold text-white">
+              <div className="flex size-12 select-none items-center justify-center rounded-md bg-[#1d657a] text-xl font-semibold text-white">
                 <span>0{idx + 1}</span>
               </div>
 
               {/* Title Section */}
               <div className="ml-4 flex-1">
-                <h1 className="text-lg font-medium text-zinc-700">{data.title}</h1>
+                <h1 className="text-lg font-medium text-gray-800">{data.title}</h1>
               </div>
 
               {/* Toggle Icon */}
               <div className="flex size-6 items-center justify-center">
                 <span
-                  className={`transition-transform duration-300 ${
+                  className={`transition-transform duration-300 text-2xl ${
                     isOpen === idx ? "rotate-45" : ""
                   }`}
                 >
@@ -72,14 +72,14 @@ export default function Faq() {
                 isOpen === idx ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
               }`}
             >
-              <div className="p-4 text-sm text-slate-600">{data.description}</div>
+              <div className="p-4 text-sm text-gray-600">{data.description}</div>
             </div>
           </div>
         ))}
       </div>
 
       {/* Right Section: Image */}
-      <div className="md:w-1/2 flex justify-center">
+      <div className="md:w-1/2 flex justify-center mt-8 md:mt-0">
         <img
           src={img}
           alt="FAQ Illustration"
