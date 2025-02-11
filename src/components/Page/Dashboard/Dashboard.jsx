@@ -33,7 +33,7 @@ const Dashboard = () => {
 
       {/* Mobile Sidebar Toggle Button */}
       <button
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-[#1d657a] text-white rounded shadow-md"
+        className="lg:hidden fixed top-4 left-4 z-50 py-2 px-4 bg-[#1d657a] text-white rounded shadow-md"
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
         {isSidebarOpen ? <RiCloseCircleFill /> : <GiHamburgerMenu />}
@@ -45,17 +45,10 @@ const Dashboard = () => {
           isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         } lg:relative lg:translate-x-0 fixed inset-y-0 left-0 z-40`}
       >
-        {/* Close Button for Mobile */}
-        {/* <button
-          className="lg:hidden absolute top-4 right-4 p-2 bg-red-500 text-white rounded-full"
-          onClick={() => setIsSidebarOpen(false)}
-        >
-          <RiCloseCircleFill />
-        </button> */}
-
-        <ul className="space-y-2 mt-10">
+        <p className="text-2xl font-bold text-[#214970] pt-14 md:pt-10">Dashboard</p>
+        <ul className="space-y-2 ">
           {/* Static Links */}
-          <li>
+          <li className="mt-5">
             <Link
               to="/"
               className="block py-2 px-4 rounded bg-[#1d657a] text-white transition duration-200 "

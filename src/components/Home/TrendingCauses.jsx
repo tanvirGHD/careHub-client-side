@@ -15,7 +15,7 @@ const TrendingCauses = () => {
   } = useQuery({
     queryKey: ["charities"], // Unique key for the query
     queryFn: async () => {
-      const response = await axiosSecure.get("http://localhost:5000/all_donation");
+      const response = await axiosSecure.get("/all_donation");
       return response.data;
     },
   });

@@ -1,7 +1,8 @@
-
+import logo from "../../assets/logo.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../hook/useAuth";
+import { LuSquareMenu } from "react-icons/lu";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -17,13 +18,13 @@ const Navbar = () => {
   const links = (
     <>
       <li className=" font-bold transition duration-300 ">
-        <Link to="/">Home</Link>
+        <Link to="/">HOME</Link>
       </li>
       <li className="font-bold transition duration-300 ">
-        <Link to="/allCharity">All Charity</Link>
+        <Link to="/allCharity">ALL CHARITY</Link>
       </li>
       <li className="font-bold transition duration-300">
-        <Link to="/aboutUs">About Us</Link>
+        <Link to="/aboutUs">ABOUT US</Link>
       </li>
     </>
   );
@@ -34,21 +35,8 @@ const Navbar = () => {
       <div className="navbar-start">
         {/* Hamburger Menu for Mobile */}
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+          <div tabIndex={0} role="button" className="mr-2 lg:hidden">
+          <LuSquareMenu  />
           </div>
           <ul
             tabIndex={0}
@@ -58,16 +46,31 @@ const Navbar = () => {
           </ul>
         </div>
         {/* Logo or Branding (can be changed) */}
-        <Link to='/' className=" text-xl font-bold">CareHub</Link>
+        <span className="flex items-center space-x-2">
+          <Link
+            to="/"
+            className="text-xl font-bold flex items-center space-x-2 ml-14 lg:ml-0"
+          >
+            <span>CAREHUB</span>
+            <img
+              className="h-10 w-10"
+              src={logo}
+              alt="CareHub Logo"
+              style={{
+                filter:
+                  "brightness(0) saturate(100%) invert(18%) sepia(15%) saturate(367%) hue-rotate(150deg) brightness(95%) contrast(92%)",
+              }}
+            />
+          </Link>
+        </span>
       </div>
 
-      
       {/* Right-aligned Button (Visible on all screens) */}
       <div className="navbar-end relative">
-      {/* Centered Links (Visible only on large screens) */}
-      <div className=" hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
-      </div>
+        {/* Centered Links (Visible only on large screens) */}
+        <div className=" hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">{links}</ul>
+        </div>
         {user ? (
           <>
             {/* Profile Image Clickable to Open Dropdown */}
@@ -81,7 +84,9 @@ const Navbar = () => {
             {isDropdownOpen && (
               <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg z-10">
                 <div className="p-4">
-                  <p className="text-lg font-bold mb-2">{user?.displayName || "No Name Available"}</p>
+                  <p className="text-lg font-bold mb-2">
+                    {user?.displayName || "No Name Available"}
+                  </p>
                   <hr className="my-2" />
                   <Link
                     to="/dashboard"

@@ -11,6 +11,7 @@ import PaymentHistory from '../components/Page/payment/PaymentHistory';
 import Dashboard from '../components/Page/Dashboard/Dashboard';
 import MyProfile from '../components/Page/Dashboard/MyProfile';
 import AboutUs from '../components/Page/AboutUs';
+import PrivateRoute from './PrivateRoute';
 
 const router = () => {
   return createBrowserRouter([
@@ -33,7 +34,7 @@ const router = () => {
         {
           path: "charityDetails/:id",
           element: <CharityDetails></CharityDetails>,
-          loader: ({params}) => fetch(`http://localhost:5000/charityDetails/${params.id}`)
+          loader: ({params}) => fetch(`http://localhost:3000/charityDetails/${params.id}`)
         },
         {
           path: "map",
@@ -49,11 +50,11 @@ const router = () => {
         },
         {
           path: "paymentsHistory",
-          element: <PaymentHistory></PaymentHistory>
+          element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
         },
         {
           path: 'dashboard',
-          element: <Dashboard></Dashboard>
+          element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
         },
         {
           path: "register",

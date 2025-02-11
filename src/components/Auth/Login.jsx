@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../provider/AuthProvider";
+import SocialLogin from "./SocialLogin";
 
 
 export default function Login() {
@@ -34,11 +35,11 @@ export default function Login() {
   
 
   return (
-    <div className="flex justify-center items-center md:mt-28 px-4 ">
+    <div className="flex justify-center items-center md:py-10 px-4 ">
       <div className="flex flex-col md:flex-row bg-white border border-gray-300 shadow-lg rounded-lg overflow-hidden w-full max-w-3xl">
         {/* Left Side Login Form */}
         <div className="w-full md:w-2/3 p-6 md:p-10">
-          <h2 className="text-2xl font-semibold mb-2 text-center md:text-left">Login</h2>
+          <h2 className="text-2xl font-bold mb-2 text-center md:text-left text-[#174E5F]">Login</h2>
           <p className="text-gray-500 text-sm mb-6 text-center md:text-left">Please login with your account</p>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -65,7 +66,7 @@ export default function Login() {
 
             <button
               type="submit"
-              className="w-full bg-yellow-500 text-white py-3 rounded-md text-lg font-medium hover:bg-yellow-600 transition"
+              className="w-full cursor-pointer bg-[#174E5F] text-white py-3 rounded-md text-lg font-medium hover:bg-[#35606d] transition"
             >
               Login
             </button>
@@ -75,12 +76,12 @@ export default function Login() {
         {/* Right Side Register Info */}
         <div className="w-full md:w-1/3 bg-gray-50 flex flex-col items-center justify-center p-6 md:p-8">
           <p className="text-gray-700 text-sm">Do not have an account?</p>
-          <button className="w-full border border-yellow-500 text-yellow-500 py-3 rounded-md mt-2 font-medium hover:bg-yellow-100 transition">
+          <button className="w-full border border-[#174E5F] cursor-pointer py-3 rounded-md mt-2 font-medium hover:bg-[#517783] transition hover:text-white text-[#174E5F]">
             <Link to='/register'>Register</Link>
           </button>
-
+          <SocialLogin></SocialLogin>
           <p className="text-gray-500 text-xs mt-6 text-center">
-            <span className="text-yellow-500 font-semibold">*Forgot Password?</span> Reset your password securely.
+            <span className="text-[#174E5F] font-semibold">*Forgot Password?</span> Reset your password securely.
           </p>
         </div>
       </div>

@@ -1,8 +1,9 @@
-
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import useAuth from "../../../hook/useAuth"; // Import useAuth
 
 const PaymentHistory = () => {
+  const { user } = useAuth(); // Get the logged-in user
   const axiosSecure = useAxiosSecure();
   const [payment, setPayment] = useState([]);
   const [filteredPayment, setFilteredPayment] = useState([]);
@@ -10,13 +11,19 @@ const PaymentHistory = () => {
   const [sortOrder, setSortOrder] = useState("desc");
 
   useEffect(() => {
-    axiosSecure("/payments")
-      .then((response) => {
-        setPayment(response.data);
-        setFilteredPayment(response.data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+    if (user?.email) {
+      axiosSecure("/payments")
+        .then((response) => {
+          // Filter payments for the logged-in user
+          const userPayments = response.data.filter(
+            (item) => item.email === user.email
+          );
+          setPayment(userPayments);
+          setFilteredPayment(userPayments);
+        })
+        .catch((error) => console.error("Error fetching data:", error));
+    }
+  }, [user]); // Add user as a dependency
 
   useEffect(() => {
     const filtered = payment.filter((item) =>
@@ -111,7 +118,7 @@ const PaymentHistory = () => {
                       ${item.price}
                     </td>
                     <td className="py-2 px-3 text-gray-700" data-label="Date">
-                      {item.date}
+                      {new Date(item.date).toLocaleDateString()} {/* Format date */}
                     </td>
                     <td className="py-2 px-3 font-medium" data-label="Status">
                       <span
