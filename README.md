@@ -1,6 +1,7 @@
 # Care Hub Project(charity) 
 payment method, Authtication implement
-#lice link : https://carehub-peoject.web.app
+
+##live link : https://carehub-peoject.web.app
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
